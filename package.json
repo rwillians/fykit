@@ -1,5 +1,19 @@
 {
   "name": "fykit",
+  "scripts": {
+    "pkgs:audit-fix": "lerna exec npm audit fix",
+    "pkgs:audit": "lerna exec npm audit",
+    "pkgs:build": "lerna exec npm run build",
+    "pkgs:clear": "lerna exec 'rm -rf dist/ node_modules/'",
+    "pkgs:install": "lerna exec npm install",
+    "pkgs:link": "lerna link",
+    "pkgs:lint-fix": "lerna exec npm run lint:fix",
+    "pkgs:lint": "lerna exec npm run lint",
+    "pkgs:prepare": "lerna exec 'npm run lint && npm run build && npm test'",
+    "pkgs:publish": "lerna publish",
+    "pkgs:test": "lerna exec npm test",
+    "pkgs:upgrade": "lerna exec npm upgrade"
+  },
   "dependencies": {
     "lerna": "^3.22.1"
   }
