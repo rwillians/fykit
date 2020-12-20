@@ -1,0 +1,6 @@
+{
+  "name": "fykit",
+  "dependencies": {
+    "lerna": "^3.22.1"
+  }
+}
