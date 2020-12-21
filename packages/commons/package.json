@@ -25,12 +25,13 @@
     "url": "https://github.com/rwillians/fykit/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Apackage%2Fcommons"
   },
   "engines": {
-    "node": ">= 8.6.0"
+    "node": ">= 10.3.0"
   },
   "scripts": {
     "build": "rm -rf dist/ && tsc",
-    "lint": "prettier -c index.ts lib/{**/,}*.ts",
-    "lint:fix": "prettier --write -c index.ts lib/{**/,}*.ts",
+    "clear": "rm -rf dist/ node_modules/",
+    "lint": "prettier -c index.ts src/**/*.ts",
+    "lint:fix": "prettier --write -c index.ts src/**/*.ts",
     "test": "exit 0"
   },
   "devDependencies": {

@@ -1,4 +1,3 @@
-[![Prettier code style](https://img.shields.io/badge/code_style-prettier+custom-brightgreen.svg)](https://standardjs.com)
 ![Package latest version](https://img.shields.io/npm/v/@fykit/commons/latest.svg?label=%40fykit%2Fcommons)
 ![Required node version](https://img.shields.io/node/v/@fykit/commons.svg?style=flat)
 ![Supported types](https://img.shields.io/npm/types/@fykit/commons.svg)
@@ -15,7 +14,6 @@ Installation is done using the npm install command:
 ```sh
 npm install @fykit/commons
 ```
-
 
 ## Exported objects
 
