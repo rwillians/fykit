@@ -9,7 +9,7 @@ on:
       - 'lerna.json'
       - 'package.json'
       - 'package-lock.json'
-      - 'shared/*'
+      - 'shared/*.*'
       - 'packages/*/package.json'
       - 'packages/*/package-lock.json'
       - 'packages/*/*.ts'
@@ -20,15 +20,10 @@ on:
 
 jobs:
   build-and-test:
-    name: ${{ matrix.app }} with node ${{ matrix.node-version }}
+    name: Node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app:
-          - appify-http
-          - appify-server-factory
-          - commons
-          - config
         node-version:
           - '10.13.0'
           - '10.23.0'
@@ -56,23 +51,16 @@ jobs:
             node_modules/
 
       - name: Install lerna dependencies
-        run: npm ci
+        run: npm i
 
-      - name: Install package dependencies
-        run: |
-          lerna bootstrap
+      - name: Install packages' dependencies
+        run: npm run pkgs:bootstrap
 
-      - name: Lint package
-        run: |
-          cd packages/${{ matrix.app }}
-          npm run lint
+      - name: Lint packages
+        run: npm run pkgs:lint
 
-      - name: Build package
-        run: |
-          packages/${{ matrix.app }}
-          npm run build
+      - name: Build packages
+        run: npm run pkgs:build
 
-      - name: Test package
-        run: |
-          packages/${{ matrix.app }}
-          npm run test
+      - name: Test packages
+        run: npm run pkgs:test
