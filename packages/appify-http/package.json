@@ -1,13 +1,16 @@
 {
-  "name": "@fykit/appify-server-factory",
-  "description": "The easiest way to create a custom server for your appify app.",
+  "name": "@fykit/appify-http",
+  "description": "The native HTTP server for your appify app.",
   "version": "1.1.1-alpha.1",
   "main": "dist/index.js",
   "files": [
     "dist/*.*",
     "dist/**/*.*"
   ],
-  "publishappify-server-factory": {
+  "bin": {
+    "appify-http": "dist/index.js"
+  },
+  "publishConfig": {
     "access": "public"
   },
   "keywords": [
@@ -18,13 +21,13 @@
   "license": "MIT",
   "author": "Rafael Willians <me@rwillians.com>",
   "contributors": [],
-  "homepage": "https://github.com/rwillians/fykit/tree/master/packages/appify-server-factory/#readme",
+  "homepage": "https://github.com/rwillians/fykit/tree/master/packages/commons/#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rwillians/fykit.git"
   },
   "bugs": {
-    "url": "https://github.com/rwillians/fykit/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Apackage%2Fappify-server-factory"
+    "url": "https://github.com/rwillians/fykit/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Apackage%2Fcommons"
   },
   "engines": {
     "node": ">= 10.3.0"
@@ -37,17 +40,10 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "debug": "^4.3.1",
-    "require-relative": "^0.8.7",
-    "sugar-env": "^1.5.13",
-    "yargs": "^16.2.0"
+    "@fykit/appify-server-factory": "^1.1.1-alpha.1"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.5",
-    "@types/node": "^14.14.16",
-    "@types/require-relative": "^0.8.0",
-    "@types/yargs": "^15.0.12",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.3"
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.5"
   }
 }
