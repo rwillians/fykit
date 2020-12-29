@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    paths:
+      - 'lerna.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'shared/*'
+      - 'packages/*/package.json'
+      - 'packages/*/package-lock.json'
+      - 'packages/*/*.ts'
+      - 'packages/*/src/**/*.*'
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.app }} with node ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app:
+          - appify-http
+          - appify-server-factory
+          - commons
+          - config
+        node-version:
+          - '10.13.0'
+          - '10.23.0'
+          - '11.15.0'
+          - '12.20.0'
+          - '13.14.0'
+          - '14.15.3'
+          - '15.5.0'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Retrieve NPM cache
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-${{ matrix.node-version }}-npm
+          path: |
+            ~/.npm
+            node_modules/
+
+      - name: Install lerna dependencies
+        run: npm ci
+
+      - name: Install package dependencies
+        run: |
+          lerna bootstrap
+
+      - name: Lint package
+        run: |
+          cd packages/${{ matrix.app }}
+          npm run lint
+
+      - name: Build package
+        run: |
+          packages/${{ matrix.app }}
+          npm run build
+
+      - name: Test package
+        run: |
+          packages/${{ matrix.app }}
+          npm run test
