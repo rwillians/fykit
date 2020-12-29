@@ -35,8 +35,8 @@
   "scripts": {
     "build": "rm -rf dist/ && tsc",
     "clear": "rm -rf dist/ node_modules/",
-    "lint": "prettier -c index.ts",
-    "lint:fix": "prettier --write -c index.ts",
+    "lint": "prettier -c index.ts package*.json",
+    "lint:fix": "prettier --write -c index.ts package*.json",
     "test": "exit 0"
   },
   "dependencies": {
