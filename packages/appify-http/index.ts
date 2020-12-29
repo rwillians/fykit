@@ -4,7 +4,7 @@ import createServer from '@fykit/appify-server-factory';
 
 const VERSION = require('./packages.json').version;
 
-const serve = createServer('Native HTTP Server', VERSION, builder =>
+const serve = createServer('Native HTTP Server', VERSION, (builder) =>
   builder
     .alias('i', 'ip')
     .describe('i', 'The host IP to which the server will be binded.')
@@ -27,7 +27,7 @@ const onSocket = (
   path: string
 ): [string, (err?: Error) => void] => [
   path,
-  listening(debug, `socket ${path}`)
+  listening(debug, `socket ${path}`),
 ];
 
 const onPort = (
@@ -37,7 +37,7 @@ const onPort = (
 ): [number, string, (err?: Error) => void] => [
   port,
   ip,
-  listening(debug, `http://${ip}:${port}/`)
+  listening(debug, `http://${ip}:${port}/`),
 ];
 
 serve(async ({ app, args, debug }) => {

@@ -11,13 +11,16 @@ import yargs from 'yargs';
 
 const SERVER_FACTORY_VERSION = require('./package.json').version;
 
-const getVersion = (serverName: string, serverVersion: string | null): string => {
+const getVersion = (
+  serverName: string,
+  serverVersion: string | null
+): string => {
   if (!serverVersion || serverVersion == '') {
-    return SERVER_FACTORY_VERSION
+    return SERVER_FACTORY_VERSION;
   }
 
-  return `Server Factory ${SERVER_FACTORY_VERSION} / ${serverName} ${serverVersion}`
-}
+  return `Server Factory ${SERVER_FACTORY_VERSION} / ${serverName} ${serverVersion}`;
+};
 
 const requireRelative = (file: string) => {
   return relative(path.resolve(process.cwd(), file));
@@ -30,32 +33,26 @@ const factory = (
 ) => {
   const args = yargs
     .usage('Usage: $0 [app] [options]')
-    .command(
-      '$0 [app] [options]',
-      `Serves the app with ${name}`,
-      builder =>
-        extendYargsFn(
-          builder
-            .positional('app', {
-              describe: 'Relative path the your app file.',
-              default: 'app.js'
-            })
-            .alias('d', 'debug')
-            .describe('d', 'Enables appify debug info')
-            .boolean('d')
-            .alias('c', 'config')
-            .describe('c', 'Relative path to your config file.')
-            .string('c')
-        )
+    .command('$0 [app] [options]', `Serves the app with ${name}`, (builder) =>
+      extendYargsFn(
+        builder
+          .positional('app', {
+            describe: 'Relative path the your app file.',
+            default: 'app.js',
+          })
+          .alias('d', 'debug')
+          .describe('d', 'Enables appify debug info')
+          .boolean('d')
+          .alias('c', 'config')
+          .describe('c', 'Relative path to your config file.')
+          .string('c')
+      )
     )
     .help('h')
     .alias('h', 'help')
-    .version(getVersion(name, version))
-    .argv;
+    .version(getVersion(name, version)).argv;
 
-  const namespaces = process.env.DEBUG
-    ? process.env.DEBUG.split(',')
-    : [];
+  const namespaces = process.env.DEBUG ? process.env.DEBUG.split(',') : [];
 
   if (args.debug) {
     namespaces.push('appify:*');
@@ -81,9 +78,7 @@ const factory = (
   ): Promise<void> => {
     const environment = env.current;
 
-    const config = args.config
-      ? requireRelative(args.config as string)
-      : { }
+    const config = args.config ? requireRelative(args.config as string) : {};
 
     const app = await appFactory({ environment, config });
 
@@ -91,7 +86,7 @@ const factory = (
       app,
       args,
       debug: debug('appify:server'),
-      requireRelative
+      requireRelative,
     });
   };
 };
