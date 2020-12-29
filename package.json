@@ -3,6 +3,7 @@
   "scripts": {
     "pkgs:audit-fix": "lerna exec npm audit fix",
     "pkgs:audit": "lerna exec npm audit",
+    "pkgs:bootstrap": "lerna bootstrap",
     "pkgs:build": "lerna exec npm run build",
     "pkgs:clear": "lerna exec npm run clear",
     "pkgs:install": "lerna exec npm install",
