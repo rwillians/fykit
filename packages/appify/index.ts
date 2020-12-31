@@ -1,9 +1,9 @@
-import { config, halt } from '@fykit/config'
-import appify from './src/appify-factory.js'
+import { config, halt } from '@fykit/config';
+import appify from './src/appify-factory.js';
 
-export default appify
-export { appify }
-export { config, halt }
+export default appify;
+export { appify };
+export { config, halt };
 
 export { BadRequestHttpError } from '@fykit/commons';
 export { ConflictHttpError } from '@fykit/commons';
