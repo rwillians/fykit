@@ -1,7 +1,7 @@
 {
   "name": "@fykit/appify-http",
   "description": "The native HTTP server for your appify app.",
-  "version": "1.1.1-alpha.4",
+  "version": "1.1.1-alpha.5",
   "main": "dist/index.js",
   "files": [
     "dist/*.*",
@@ -40,7 +40,7 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "@fykit/appify-server-factory": "^1.1.1-alpha.4"
+    "@fykit/appify-server-factory": "^1.1.1-alpha.5"
   },
   "devDependencies": {
     "prettier": "^2.1.2",
