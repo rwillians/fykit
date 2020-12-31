@@ -3,6 +3,8 @@
 
 ## Main packages
 
+* [@fykit/appify](https://github.com/rwillians/fykit/tree/master/packages/appify) [ see on <a href="https://www.npmjs.com/package/@fykit/appify" target="_blank" rel="noopener">npm</a> ] is an effortless opinionated API bootstrap as module;
+
 * [@fykit/appify-http](https://github.com/rwillians/fykit/tree/master/packages/appify-http) [ see on <a href="https://www.npmjs.com/package/@fykit/appify-http" target="_blank" rel="noopener">npm</a> ] is the native http server cli for your appify app;
 
 

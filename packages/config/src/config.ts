@@ -23,9 +23,10 @@ const validators = {
   url: isUrl,
 };
 
+
 const config = (
   fn: (arg: {
-    env: (lookupNames: string | string[], middlewares: Function[]) => any;
+    env: (lookupNames: string | string[], middlewares?: Function[]) => any;
     is: typeof validators;
     as: typeof casters;
   }) => any
