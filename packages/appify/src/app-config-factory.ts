@@ -35,5 +35,5 @@ export default halt((userlandConfig: UserlandConfig, environment: string): Gener
     };
   });
 
-  return Object.freeze(defaultsdeep(userlandConfig, baseConfig));
+  return Object.freeze(defaultsdeep(baseConfig, userlandConfig));
 });

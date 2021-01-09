@@ -1,9 +1,10 @@
 import { config, halt } from '@fykit/config';
-import appify from './src/appify-factory.js';
+import appify from './src/appify-factory';
 
 export default appify;
 export { appify };
 export { config, halt };
+export { default as withConfig } from './src/with-config-factory';
 
 export { BadRequestHttpError } from '@fykit/commons';
 export { ConflictHttpError } from '@fykit/commons';

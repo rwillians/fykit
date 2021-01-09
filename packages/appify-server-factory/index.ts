@@ -43,9 +43,6 @@ const factory = (
           .alias('d', 'debug')
           .describe('d', 'Enables appify debug info')
           .boolean('d')
-          .alias('c', 'config')
-          .describe('c', 'Relative path to your config file.')
-          .string('c')
       )
     )
     .help('h')
@@ -64,7 +61,6 @@ const factory = (
 
   const appFactory: (arg: {
     environment: string;
-    config: { [key: string]: any };
   }) => Promise<RequestListener> = requireRelative(args.app as string);
 
   return async (
@@ -76,14 +72,8 @@ const factory = (
       [key: string]: any;
     }) => Promise<void>
   ): Promise<void> => {
-    const environment = env.current;
-
-    const config = args.config ? requireRelative(args.config as string) : {};
-
-    const app = await appFactory({ environment, config });
-
     return startServerFn({
-      app,
+      app: await appFactory({ environment: env.current }),
       args,
       debug: debug('appify:server'),
       requireRelative,
