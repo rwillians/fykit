@@ -10,7 +10,7 @@
     "pkgs:link": "lerna link",
     "pkgs:lint-fix": "lerna exec npm run lint:fix",
     "pkgs:lint": "lerna exec npm run lint",
-    "pkgs:before-publish": "lerna exec 'npm run lint && npm run build && npm test'",
+    "pkgs:before-publish": "lerna exec 'npm run lint' &&  lerna exec 'npm run build' && lerna exec 'npm test'",
     "pkgs:publish": "lerna publish",
     "pkgs:test": "lerna exec npm test",
     "pkgs:upgrade": "lerna exec npm upgrade"
