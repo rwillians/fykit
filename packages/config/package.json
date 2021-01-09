@@ -34,11 +34,12 @@
     "clear": "rm -rf dist/ node_modules/",
     "lint": "prettier -c index.ts src/**/*.ts",
     "lint:fix": "prettier --write -c index.ts src/**/*.ts",
+    "pretest": "tsc",
     "test": "mocha test/{*,**/**}.test.js --check-leaks --exit --full-trace --recursive --throw-deprecation"
   },
   "dependencies": {
     "@fykit/commons": "^1.1.1-alpha.5",
-    "sugar-env": "^1.5.13"
+    "sugar-env": "^1.5.14"
   },
   "devDependencies": {
     "chai": "^4.2.0",

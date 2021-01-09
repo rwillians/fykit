@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import http from 'http';
 import createServer from '@fykit/appify-server-factory';
+import { Debugger } from '@fykit/appify-server-factory';
 
 const VERSION = require('./packages.json').version;
 
@@ -17,13 +18,13 @@ const serve = createServer('Native HTTP Server', VERSION, (builder) =>
     .describe('s', 'The socket path to which the server will be binded.')
 );
 
-const listening = (debug: debug.Debugger, where: string) => (err?: Error) => {
+const listening = (debug: Debugger, where: string) => (err?: Error) => {
   if (err) throw err;
   debug(`🚀 server is listening on ${where}`);
 };
 
 const onSocket = (
-  debug: debug.Debugger,
+  debug: Debugger,
   path: string
 ): [string, (err?: Error) => void] => [
   path,
@@ -31,7 +32,7 @@ const onSocket = (
 ];
 
 const onPort = (
-  debug: debug.Debugger,
+  debug: Debugger,
   ip: string,
   port: number
 ): [number, string, (err?: Error) => void] => [
