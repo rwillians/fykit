@@ -1,8 +1,9 @@
-import express from 'express';
 import debugFactory from 'debug';
+import defaultsdeep from 'lodash.defaultsdeep'
+import express from 'express';
 import * as Sentry from '@sentry/node';
 
-import appConfigFactory from './app-config-factory';
+import baseConfigFactory from './base-config-factory';
 import * as middlewares from './middlewares';
 
 import {
@@ -22,14 +23,22 @@ const defaultLogger: Logger = {
 
 export default function appify(fn: AppifyFactoryFn) {
   return async function factory({
-    config: userlandConfig = {},
+    config: userlandConfigMaybeFn = {},
     environment,
     logger = defaultLogger,
     ...props
   }: AppifyFactoryFnArg): Promise<RequestListener> {
     const app = express()
     const router = express.Router()
-    const config = appConfigFactory(userlandConfig, environment)
+
+    const resolvedBaseConfig = baseConfigFactory(environment)
+    const resolvedUserlandConfig = typeof userlandConfigMaybeFn == 'function'
+      ? await Promise.resolve(userlandConfigMaybeFn(environment, resolvedBaseConfig))
+      : userlandConfigMaybeFn
+
+    const config = Object.freeze(
+      defaultsdeep(resolvedUserlandConfig, resolvedBaseConfig)
+    )
 
     config.sentry.dsn
       ? Sentry.init({ ...config.sentry })
@@ -42,7 +51,7 @@ export default function appify(fn: AppifyFactoryFn) {
     app.use(middlewares.helmet(config.helmet))
     app.use(middlewares.nocache(config.nocache))
 
-    await Promise.resolve(fn({ router, config: userlandConfig, environment, logger, ...props }))
+    await Promise.resolve(fn({ router, config, environment, logger, ...props }))
 
     app.use(router)
 

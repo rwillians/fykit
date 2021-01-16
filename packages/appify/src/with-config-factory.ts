@@ -1,13 +1,10 @@
-import { AppifyFactoryFn, AppifyFactoryFnArg, GenericObject } from './types';
+import { AppifyFactoryFn, AppifyFactoryFnArg, UserlandConfigArg } from './types';
 
 export default (
   appFactory: AppifyFactoryFn,
-  configFactory: (arg: AppifyFactoryFnArg) => GenericObject | Promise<GenericObject>
+  config: UserlandConfigArg
 ) => {
   return async (props: AppifyFactoryFnArg) => {
-    return appFactory({
-      ...props,
-      config: await Promise.resolve(configFactory({ ...props })),
-    });
+    return appFactory({ ...props, config });
   };
 };

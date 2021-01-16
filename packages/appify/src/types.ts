@@ -10,10 +10,11 @@ type GenericObject = {
   [key: string]: any
 };
 
-type UserlandConfig = GenericObject;
+type UserlandConfigFactoryFn = (environment: string, config?: GenericObject) => GenericObject | Promise<GenericObject>
+type UserlandConfigArg = GenericObject | UserlandConfigFactoryFn
 
 type AppifyFactoryFnArg = {
-  config?: UserlandConfig;
+  config?: GenericObject | UserlandConfigFactoryFn;
   environment: string;
   logger?: Logger;
   [key: string]: any;
@@ -29,5 +30,6 @@ export {
   GenericObject,
   Logger,
   RequestListener,
-  UserlandConfig,
+  UserlandConfigArg,
+  UserlandConfigFactoryFn,
 };
