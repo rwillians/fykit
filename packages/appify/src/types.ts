@@ -20,13 +20,21 @@ type AppifyFactoryFnArg = {
   [key: string]: any;
 };
 
+type AppifyFactoryCallbackArg = {
+  config?: GenericObject;
+  environment: string;
+  logger?: Logger;
+  [key: string]: any;
+};
+
 type AppifyFactoryFn = (
-  arg: AppifyFactoryFnArg
+  arg: AppifyFactoryCallbackArg
 ) => Promise<RequestListener>;
 
 export {
   AppifyFactoryFn,
   AppifyFactoryFnArg,
+  AppifyFactoryCallbackArg,
   GenericObject,
   Logger,
   RequestListener,
