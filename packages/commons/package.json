@@ -1,7 +1,7 @@
 {
   "name": "@fykit/commons",
   "description": "Common objects used accross the fykit packages.",
-  "version": "1.1.1-alpha.5",
+  "version": "1.1.1-alpha.6",
   "main": "dist/index.js",
   "files": [
     "dist/*.*",
