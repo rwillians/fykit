@@ -1,7 +1,7 @@
 {
   "name": "@fykit/config",
   "description": "Centralized application-configuration object builder for the cool kids.",
-  "version": "1.1.1-alpha.6",
+  "version": "1.1.1-alpha.8",
   "main": "dist/index.js",
   "files": [
     "dist/*.*",
@@ -38,7 +38,7 @@
     "test": "mocha test/{*,**/**}.test.js --check-leaks --exit --full-trace --recursive --throw-deprecation"
   },
   "dependencies": {
-    "@fykit/commons": "^1.1.1-alpha.6",
+    "@fykit/commons": "^1.1.1-alpha.8",
     "sugar-env": "^1.5.14"
   },
   "devDependencies": {
