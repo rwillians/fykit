@@ -22,9 +22,9 @@ type AppifyBootupFnArg = {
 };
 
 type AppifyFactoryCallbackArg = {
-  config?: GenericObject;
+  config: GenericObject;
   environment: string;
-  logger?: Logger;
+  logger: Logger;
   router: Router;
   [key: string]: any;
 };
