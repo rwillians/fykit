@@ -14,8 +14,8 @@ type GenericObject = {
 type UserlandConfigFactoryFn = (environment: string, config?: GenericObject) => GenericObject | Promise<GenericObject>
 type UserlandConfigArg = GenericObject | UserlandConfigFactoryFn
 
-type AppifyFactoryFnArg = {
-  config?: GenericObject | UserlandConfigFactoryFn;
+type AppifyBootupFnArg = {
+  config?: UserlandConfigArg;
   environment: string;
   logger?: Logger;
   [key: string]: any;
@@ -29,14 +29,19 @@ type AppifyFactoryCallbackArg = {
   [key: string]: any;
 };
 
-type AppifyFactoryFn = (
+type AppifyFactoryCallbackFn = (
   arg: AppifyFactoryCallbackArg
-) => Promise<RequestListener>;
+) => void | Promise<void>;
+
+type AppifyBootupFn = (arg: AppifyBootupFnArg) => Promise<RequestListener>
+type AppifyFactoryFn = (cb: AppifyFactoryCallbackFn) => AppifyBootupFn
 
 export {
+  AppifyBootupFn,
+  AppifyBootupFnArg,
   AppifyFactoryCallbackArg,
+  AppifyFactoryCallbackFn,
   AppifyFactoryFn,
-  AppifyFactoryFnArg,
   GenericObject,
   Logger,
   RequestListener,

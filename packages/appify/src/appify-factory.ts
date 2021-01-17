@@ -7,8 +7,8 @@ import baseConfigFactory from './base-config-factory';
 import * as middlewares from './middlewares';
 
 import {
-  AppifyFactoryFn,
-  AppifyFactoryFnArg,
+  AppifyFactoryCallbackFn,
+  AppifyBootupFnArg,
   Logger,
   RequestListener
 } from './types';
@@ -21,13 +21,13 @@ const defaultLogger: Logger = {
   warn: console.warn.bind(console),
 };
 
-export default function appify(fn: AppifyFactoryFn) {
-  return async function factory({
+export default function appify(cb: AppifyFactoryCallbackFn) {
+  return async function bootup({
     config: userlandConfigMaybeFn = {},
     environment,
     logger = defaultLogger,
     ...props
-  }: AppifyFactoryFnArg): Promise<RequestListener> {
+  }: AppifyBootupFnArg): Promise<RequestListener> {
     const app = express()
     const router = express.Router()
 
@@ -51,7 +51,7 @@ export default function appify(fn: AppifyFactoryFn) {
     app.use(middlewares.helmet(config.helmet))
     app.use(middlewares.nocache(config.nocache))
 
-    await Promise.resolve(fn({ router, config, environment, logger, ...props }))
+    await Promise.resolve(cb({ router, config, environment, logger, ...props }))
 
     app.use(router)
 

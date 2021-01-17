@@ -1,10 +1,10 @@
-import { AppifyFactoryFn, AppifyFactoryFnArg, UserlandConfigArg } from './types';
+import { AppifyBootupFn, AppifyBootupFnArg, UserlandConfigArg } from './types';
 
 export default (
-  appFactory: AppifyFactoryFn,
+  appFactory: AppifyBootupFn,
   config: UserlandConfigArg
 ) => {
-  return async (props: AppifyFactoryFnArg) => {
+  return async (props: AppifyBootupFnArg) => {
     return appFactory({ ...props, config });
   };
 };
