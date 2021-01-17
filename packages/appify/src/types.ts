@@ -1,4 +1,5 @@
 import { RequestListener } from 'http';
+import { Router } from 'express';
 
 type Logger = {
   error(message?: any, ...optionalParams: any[]): void;
@@ -24,6 +25,7 @@ type AppifyFactoryCallbackArg = {
   config?: GenericObject;
   environment: string;
   logger?: Logger;
+  router: Router;
   [key: string]: any;
 };
 
@@ -32,12 +34,13 @@ type AppifyFactoryFn = (
 ) => Promise<RequestListener>;
 
 export {
+  AppifyFactoryCallbackArg,
   AppifyFactoryFn,
   AppifyFactoryFnArg,
-  AppifyFactoryCallbackArg,
   GenericObject,
   Logger,
   RequestListener,
+  Router,
   UserlandConfigArg,
   UserlandConfigFactoryFn,
 };
