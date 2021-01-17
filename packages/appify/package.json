@@ -39,7 +39,7 @@
     "test": "mocha test/{*,**/**}.test.js --check-leaks --exit --full-trace --recursive --throw-deprecation"
   },
   "dependencies": {
-    "@fykit/appify-http": "^1.1.1-alpha.8",
+    "@fykit/appify-http": "^1.1.1-alpha.11",
     "@fykit/commons": "^1.1.1-alpha.8",
     "@fykit/config": "^1.1.1-alpha.8",
     "@sentry/node": "^5.30.0",
