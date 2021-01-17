@@ -65,6 +65,6 @@
     "typescript": "^4.1.3"
   },
   "optionalDependencies": {
-    "@fykit/appify-http": "^1.1.1-alpha.8"
+    "@fykit/appify-http": "^1.1.1-alpha.11"
   }
 }

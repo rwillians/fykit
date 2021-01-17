@@ -9,7 +9,7 @@ import relative from 'require-relative';
 import { RequestListener } from 'http';
 import yargs from 'yargs';
 
-const SERVER_FACTORY_VERSION = require('./package.json').version;
+const SERVER_FACTORY_VERSION = require('../package.json').version;
 
 const getVersion = (
   serverName: string,

@@ -3,7 +3,7 @@ import http from 'http';
 import createServer from '@fykit/appify-server-factory';
 import { Debugger } from '@fykit/appify-server-factory';
 
-const VERSION = require('./packages.json').version;
+const VERSION = require('../package.json').version;
 
 const serve = createServer('Native HTTP Server', VERSION, (builder) =>
   builder
