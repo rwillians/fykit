@@ -1,5 +1,9 @@
 ![Fy Kit](./.assets/fy-kit.png)
 
+> **IMPORTANT!**
+> 
+> The packages contained in this project are unmaintained at the momment. I intend to pick them back up again in 2022, but for now I don't recommend using them in production.
+
 
 ## Main packages
 
