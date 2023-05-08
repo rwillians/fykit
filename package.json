@@ -1,21 +1,24 @@
 {
   "name": "fykit",
+  "private": true,
   "scripts": {
-    "pkgs:audit-fix": "lerna exec npm audit fix",
-    "pkgs:audit": "lerna exec npm audit",
-    "pkgs:bootstrap": "lerna bootstrap",
-    "pkgs:build": "lerna exec npm run build",
-    "pkgs:clear": "lerna exec npm run clear",
-    "pkgs:install": "lerna exec npm install",
-    "pkgs:link": "lerna link",
-    "pkgs:lint-fix": "lerna exec npm run lint:fix",
-    "pkgs:lint": "lerna exec npm run lint",
-    "pkgs:before-publish": "lerna exec 'npm run lint' &&  lerna exec 'npm run build' && lerna exec 'npm test'",
-    "pkgs:publish": "lerna publish",
-    "pkgs:test": "lerna exec npm test",
-    "pkgs:upgrade": "lerna exec npm upgrade"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "format": "prettier --write \"**/*.{ts,md}\"",
+    "lint": "turbo run lint",
+    "test": "vitest run",
+    "coverage": "turbo run coverage"
   },
-  "dependencies": {
-    "lerna": "^3.22.1"
-  }
+  "devDependencies": {
+    "@vitest/coverage-c8": "^0.31.0",
+    "@vitest/ui": "^0.31.0",
+    "eslint": "^8.40.0",
+    "eslint-config-custom": "*",
+    "prettier": "^2.8.8",
+    "turbo": "^1.9.3"
+  },
+  "packageManager": "npm@9.6.3",
+  "workspaces": [
+    "packages/*"
+  ]
 }
