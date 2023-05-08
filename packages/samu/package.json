@@ -1,0 +1,49 @@
+{
+  "name": "@fykit/samu",
+  "description": "The sugar code you never knew you wanted for your express error handlers, formerly `express-rescue`.",
+  "version": "1.0.0",
+  "keywords": [
+    "express",
+    "rescue",
+    "express-rescue",
+    "async",
+    "error",
+    "handler"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/rwillians/fykit/tree/v2.x/packages/samu#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rwillians/fykit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rwillians/fykit/labels/%40fykit%2Fsamu"
+  },
+  "author": "Rafael Willians <me@rwillians.com>",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "package.json",
+    "dist/index.min.js",
+    "dist/index.d.ts",
+    "dist/index"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint \"**/*.ts*\"",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "eslint": "^8.40.0",
+    "eslint-config-custom": "*",
+    "vitest": "^0.31.0",
+    "tsconfig": "*",
+    "typescript": "^5.0.4"
+  }
+}
